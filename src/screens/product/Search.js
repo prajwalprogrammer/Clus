@@ -93,10 +93,10 @@ const Search = ({navigation}) => {
                         }}
                     />
                     <View style={{ height: '20%', justifyContent: 'center' }}>
-                        <Text style={{ color: colors.black }} bold size={20}>{item.name}</Text>
+                        <Text style={{ color: colors.black }}  size={20}>{item.name}</Text>
                     </View>
                     <View style={{ height: '15%',flexDirection: 'row',justifyContent:'space-between' }}>
-                        <Text style={{ color: colors.black }} bold size={20}>{item.price}</Text>
+                        <Text style={{ color: colors.black }}  size={20}>{item.price}</Text>
                         <Ionicons name="heart-circle-sharp" size={30} color="black" />
                     </View>
                 </View>
@@ -111,7 +111,7 @@ const Search = ({navigation}) => {
         <View style={{ backgroundColor: colors.gray }}>
             <RowView style={{ margin: 33, height: 40, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <Ionicons name="chevron-back" size={30} color="black" onPress={()=>navigation.goBack()} />
-                <Text size={17} color={colors.lighttext} bold size={21}>Search Product</Text>
+                <Text size={17} color={colors.lighttext}  size={21}>Search Product</Text>
                 <Image
                     source={require('../../assets/images/7b8322de5adc6e2607af672b3afb562b.png')}
                     resizeMode="cover"
@@ -141,7 +141,7 @@ const Search = ({navigation}) => {
             </View>
             <ScrollView contentContainerStyle={{ paddingTop: 20, marginHorizontal: 10, marginBottom: 20, flexDirection: 'row' }}>
                 <View style={{ flexDirection: 'column', width: '50%' }}>
-                    <Text style={{}} size={30} bold>10 Results Found</Text>
+                    <Text style={{}} size={30} >10 Results Found</Text>
                     <FlatList
                         //columnWrapperStyle={{justifyContent:'space-evenly'}}
                         showsVerticalScrollIndicator={false}

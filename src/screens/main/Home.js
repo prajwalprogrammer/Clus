@@ -1,79 +1,24 @@
 import React from 'react'
-import { StyleSheet, View, Dimensions, Pressable, FlatList, Image, TouchableOpacity } from 'react-native'
-import { Feather, MaterialIcons, FontAwesome5, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import { StyleSheet, View, Dimensions, Pressable, FlatList, Image, ScrollView, ImageBackground } from 'react-native'
+import { Feather, SimpleLineIcons } from '@expo/vector-icons';
 import * as RootNavigation from 'navigation/RootNavigation'
 import CONSTANT from 'navigation/navigationConstant'
-import {
-    Svg,
-    Polygon
-} from 'react-native-svg';
 import { Text, RowView } from 'Styles'
 import colors from 'colors'
+import categoryData from 'data/category'
+import MainCategory from 'data/MainCategory'
+import { color } from 'react-native-reanimated';
+import generateRandomColor from 'hooks/generateRandomColor'
 
 
 const WIDTH = Dimensions.get('screen').width
 const HEIGTH = Dimensions.get('screen').height
+const uri = 'https://source.unsplash.com/random'
 
 const Home = ({navigation}) => {
     // Dummy Data
-    const [catagery, setCatagery] = React.useState([
-        {
-            id: 0,
-            name: "Winter Collection",
-            //img: images.nikePegasus36,
-            bgColor: "#BF012C",
-            type: "RUNNING",
-            price: "$186",
-            sizes: [6, 7, 8, 9, 10]
-        },
-        {
-            id: 1,
-            name: "Winter Collection 1",
-            //img: images.nikeMetcon5Black,
-            bgColor: "#D39C67",
-            type: "TRAINING",
-            price: "$135",
-        },
-        {
-            id: 2,
-            name: "Winter Collection 2",
-            //img: images.nikeZoomKobe1Proto,
-            bgColor: "#7052A0",
-            type: "BASKETBALL",
-            price: "$199",
-            sizes: [6, 7, 8, 9]
-        },
-    ]);
-
-    const [MainCat, setMainCat] = React.useState([
-        {
-            id: 0,
-            name: "Nike Air Zoom Pegasus 36",
-            img: "../../assets/images/bg1.png",
-            bgColor: "#BF012C",
-            type: "RUNNING",
-            price: "$186",
-            sizes: [6, 7, 8, 9, 10]
-        },
-        {
-            id: 1,
-            name: "Nike Metcon 5",
-            img: '../../assets/images/bg1.png',
-            bgColor: "#D39C67",
-            type: "TRAINING",
-            price: "$135",
-            sizes: [6, 7, 8, 9, 10, 11, 12]
-        },
-        {
-            id: 2,
-            name: "Nike Air Zoom Kobe 1 Proto",
-            img: '../../assets/images/bg1.png',
-            bgColor: "#7052A0",
-            type: "BASKETBALL",
-            price: "$199",
-            sizes: [6, 7, 8, 9]
-        },
-    ]);
+    const [catagery, setCatagery] = React.useState(categoryData);
+    const [MainCat, setMainCat] = React.useState(MainCategory);
 
     // Render
 
@@ -85,26 +30,12 @@ const Home = ({navigation}) => {
         } else {
             trendingStyle = {}
         }
-
         return (
-            <View style={{ ...styles.Input, width: 250, height: 70, marginHorizontal: 7, borderRadius: 25, borderColor: colors.white, borderWidth: 3, backgroundColor: item.bgColor }}>
+            <ImageBackground source={{uri}} style={{ ...styles.Input, width: 250, height: 50, marginHorizontal: 7, borderRadius: 20, backgroundColor:colors.white, opacity: 0.7,overflow:'hidden', borderWidth:5, borderColor:colors.white}}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                    <Image
-                        source={require('../../assets/images/7b8322de5adc6e2607af672b3afb562b.png')}
-                        resizeMode="cover"
-                        style={{
-                            position: 'absolute',
-                            borderRadius: 20,
-                            top: 0,
-                            width: "20%",
-                            height: '100%',
-                            left: 0
-
-                        }}
-                    />
-                    <Text size={17} color={colors.lighttext} bold >{item.name}</Text>
+                    <Text  size={17}>{item.name}</Text>
                 </View>
-            </View>
+            </ImageBackground>
         )
     }
 
@@ -120,18 +51,16 @@ const Home = ({navigation}) => {
 
         return (
             <View
-                style={{ height: 400, width: WIDTH * .85, backgroundColor: colors.white, borderWidth: 15, borderColor: colors.white, borderRadius: 25, justifyContent: 'center', marginHorizontal: 6, ...trendingStyle }}
+                style={{...styles.MainCat, ...trendingStyle, ...styles.trendingShadow }}
 
             >
-
-
                 <View style={{
                     flex: 1,
                     justifyContent: 'flex-end',
 
                 }}>
                     <Image
-                        source={require('../../assets/images/7b8322de5adc6e2607af672b3afb562b.png')}
+                        source={{uri:item.img}}
                         resizeMode="cover"
                         style={{
                             position: 'absolute',
@@ -142,10 +71,18 @@ const Home = ({navigation}) => {
 
                         }}
                     />
-                    <View style={{ height: '20%', justifyContent: 'space-between' }}>
-                        <Text style={{ color: colors.black }} bold size={20}>{item.name}</Text>
-                        <Text style={{ color: colors.black }} bold size={20}>{item.price}</Text>
-                    </View>
+                    <RowView style={{justifyContent:'space-between', height:'20%'}}>
+                        <View>
+                            <Text size={20}>{item.name}</Text>
+                            <RowView>
+                                <Text bold size={13}>$ </Text>
+                                <Text bold size={20}>{item.price}</Text>
+                            </RowView>
+                        </View>
+                        <Pressable style={{padding:15, borderRadius:100, backgroundColor:colors.black}}>
+                            <SimpleLineIcons name="bag" size={20} color={colors.white} />
+                        </Pressable>
+                    </RowView>
                 </View>
 
 
@@ -165,84 +102,76 @@ const Home = ({navigation}) => {
         }
 
         return (
-            <View style={{ ...styles.Input, width: 250, height: 100, marginHorizontal: 7, borderRadius: 25, borderColor: colors.white, borderWidth: 3, backgroundColor: colors.white }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' ,alignItems:'center'}}>
-                                   
-                      <Image
-                        source={require('../../assets/images/7b8322de5adc6e2607af672b3afb562b.png')}
-                        resizeMode="cover"
-                        style={{
-                           // position: 'absolute',
-                            borderRadius: 20,
-                            top: 0,
-                            width: "20%",
-                            height: 80,
-                            left: 0,
-                           
-
-
-                        }}
+            <View style={{ ...styles.Input, width: WIDTH * .85, height: 100, marginHorizontal: 7, borderRadius: 20, backgroundColor: colors.white, ...styles.trendingShadow, marginBottom: 30, }}>
+                <RowView style={{justifyContent: 'space-evenly'}}>
+                    <Image
+                        source={{uri}}
+                        style={{height:70, width:70, borderRadius:20}}
                     />
-                    
-                        <View>
-                    <Text size={17} color={colors.black} bold style={{fontFamily:'pl-B'}}>{item.name}</Text>
-                    <Text size={17} color={colors.black} bold >{item.price}</Text>
-                    
+                    <View style={{width:'50%'}}>
+                        <Text size={17} color={colors.black} bold>{item.name}</Text>
+                        <RowView>
+                                <Text bold size={13}>$ </Text>
+                                <Text bold size={20}>{item.price}</Text>
+                        </RowView>
                     </View>
-                </View>
+                    <Pressable style={{padding:15, borderRadius:100, backgroundColor:colors.black}}>
+                            <SimpleLineIcons name="bag" size={20} color={colors.white} />
+                    </Pressable>
+                </RowView>
             </View>
         )}
 
 
     return (
         <View style={styles.container}>
-            <RowView style={{ justifyContent: 'center', margin: 30, height: 45, }}>
-
-                <RowView style={{ justifyContent: 'space-evenly' }}>
+            <ScrollView>
+                <RowView style={{ justifyContent: 'center', margin: 30, height: 45, }}>
                     <Pressable onPress={() => RootNavigation.navigate(CONSTANT.SEARCH)}>
                         <RowView style={styles.Input}>
                             <Feather name="search" size={27} color={colors.darkblack} style={{ paddingRight: 10 }} />
-                            <Text size={17} color={colors.lighttext} bold>What are you looking for?</Text>
+                            <Text size={17} color={colors.lighttext}>What are you looking for ?</Text>
                         </RowView>
                     </Pressable>
-
                 </RowView>
-            </RowView>
 
-            <View style={{ marginLeft: 10 }}>
-                <FlatList
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    data={catagery}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item, index }) => renderCatagery(item, index)}
-                />
-            </View>
-            <RowView style={{ margin: 15 }}>
-                <Text size={27} bold>New Arrivals</Text>
-            </RowView>
-            <View style={{ marginLeft: 10 }}>
-                <FlatList
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    data={MainCat}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item, index }) => renderMainCat(item, index)}
-                />
-            </View>
-            <RowView style={{ margin: 15 }}>
-                <Text size={27} bold>We Recommend</Text>
-            </RowView>
-            <View style={{ marginLeft: 10 }}>
-
-                <FlatList
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    data={catagery}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item, index }) => renderReccomdCat(item, index)}
-                />
-            </View>
+                <View style={{ marginLeft: 10 }}>
+                    <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={catagery}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item, index }) => renderCatagery(item, index)}
+                    />
+                </View>
+                <RowView style={{ margin: 15 }}>
+                    <Text size={20}>New Arrivals</Text>
+                </RowView>
+                <View style={{ marginLeft: 10 }}>
+                    <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={MainCat}
+                        snapToInterval={WIDTH*0.85+12}
+                        decelerationRate='fast'
+                        contentContainerStyle={{paddingBottom:20}}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item, index }) => renderMainCat(item, index)}
+                    />
+                </View>
+                <RowView style={{ margin: 15 }}>
+                    <Text size={20}>We Recommend</Text>
+                </RowView>
+                <View style={{ marginLeft: 10 }}>
+                    <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={catagery}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item, index }) => renderReccomdCat(item, index)}
+                    />
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -252,16 +181,15 @@ export default Home
 const styles = StyleSheet.create({
     Input: {
         backgroundColor: colors.darkgray,
-        width: WIDTH * .75,
+        width: WIDTH * .95,
         borderRadius: 100,
         height: 50,
-        justifyContent: 'space-evenly',
-
-        opacity: 0.7,
+        justifyContent: 'center',
+        fontFamily:'OpenSans-Light',
         padding: 5
     },
     trendingShadow: {
-        shadowColor: "#000",
+        shadowColor: colors.black,
         shadowOffset: {
             width: 0,
             height: 5,
@@ -269,13 +197,21 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.29,
         shadowRadius: 4.65,
 
-        elevation: 7,
+        elevation: 10,
     },
     container: {
         backgroundColor: colors.gray,
         flex: 1,
-
-        //padding: 12,
-        marginTop: HEIGTH * 0.02
+        paddingTop: HEIGTH * 0.03,
+    },
+    MainCat:{
+        height: 400, 
+        width: WIDTH * .85, 
+        backgroundColor: colors.white, 
+        padding:15,
+        borderColor: colors.white, 
+        borderRadius: 25, 
+        justifyContent: 'center', 
+        marginHorizontal: 6
     }
 })

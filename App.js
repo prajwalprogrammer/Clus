@@ -10,14 +10,13 @@ import {AuthProvider} from 'context/auth'
 const App = () => {
   
   let [fontsLoaded] = useFonts({
-      'os-L': require('./src/assets/fonts/openSans/OpenSans-Light.ttf'),
-      'os-R': require('./src/assets/fonts/openSans/OpenSans-Regular.ttf'),
-      'os-B': require('./src/assets/fonts/openSans/OpenSans-SemiBold.ttf'),
-      'pl-I': require('./src/assets/fonts/prosaLibre/ProzaLibre-Italic.ttf'),
-      'pl-M': require('./src/assets/fonts/prosaLibre/ProzaLibre-Medium.ttf'),
-      'pl-R': require('./src/assets/fonts/prosaLibre/ProzaLibre-Regular.ttf'),
-      'pl-B': require('./src/assets/fonts/prosaLibre/ProzaLibre-SemiBold.ttf'),
-      'pl-BI': require('./src/assets/fonts/prosaLibre/ProzaLibre-SemiBoldItalic.ttf'),
+      'OpenSans-Light': require('./assets/font/openSans/OpenSans-Light.ttf'),
+      'OpenSans-Regular': require('./assets/font/openSans/OpenSans-Regular.ttf'),
+      'OpenSans-SemiBold': require('./assets/font/openSans/OpenSans-SemiBold.ttf'),
+      'ProzaLibre-Medium': require('./assets/font/prosaLibre/ProzaLibre-Medium.ttf'),
+      'ProzaLibre-Regular': require('./assets/font/prosaLibre/ProzaLibre-Regular.ttf'),
+      'ProzaLibre-SemiBold': require('./assets/font/prosaLibre/ProzaLibre-SemiBold.ttf'),
+      'ProzaLibre-SemiBoldItalic': require('./assets/font/prosaLibre/ProzaLibre-SemiBoldItalic.ttf'),
   });
 
   if(!fontsLoaded){
