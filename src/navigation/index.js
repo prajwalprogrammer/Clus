@@ -7,10 +7,12 @@ import CONSTANT from "./navigationConstant.json";
 import { navigationRef } from "./RootNavigation";
 import { AuthConsumer } from "../context/auth";
 
-import LoginScreen from "screen/auth/login";
-import HomeScreen from "screen/main";
 
-import color from "colors";
+import Home from "../screens/main/Home";
+import PlayHome from "../screens/auth/login";
+import PlayHome1 from "../screens/main/VideoPlay";
+import Search from "../screens/product/Search";
+import ProductDetails from "../screens/product/ProductDetails";
 
 const Index = () => {
   const Stack = createStackNavigator();
@@ -22,19 +24,21 @@ const Index = () => {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {!auth ? (
+      {auth ? (
         <Stack.Navigator
           headerMode={false}
           screenOptions={{ animationEnabled: false }}
         >
-          <Stack.Screen component={LoginScreen} name={CONSTANT.Login} />
+          <Stack.Screen component={PlayHome} name={CONSTANT.LOGIN} />
         </Stack.Navigator>
       ) : (
         <Stack.Navigator
           headerMode={false}
           screenOptions={{ animationEnabled: false }}
         >
-          <Stack.Screen component={HomeScreen} />
+          <Stack.Screen component={Home} name={CONSTANT.HOME} />
+          <Stack.Screen component={Search} name={CONSTANT.SEARCH} />
+          <Stack.Screen component={ProductDetails} name={CONSTANT.ProductDetails} />
         </Stack.Navigator>
       )}
     </NavigationContainer>

@@ -1,6 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,Dimensions } from 'react-native'
+import Home from './Home'
+import PlayHome from './VideoPlay'
 
+const WIDTH = Dimensions.get('screen').width
 const index = () => {
     return (
         <FlatList

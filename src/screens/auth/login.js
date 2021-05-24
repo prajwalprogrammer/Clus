@@ -10,7 +10,7 @@ import color from 'colors'
 const WIDTH = Dimensions.get('screen').width
 const HEIGTH = Dimensions.get('screen').height
 
-const login = () => {
+const PlayHome = () => {
     return (
         <View style={styles.container}>
             <Text>Login</Text>
@@ -22,14 +22,14 @@ const login = () => {
     )
 }
 
-export default login
+export default PlayHome
 
 const styles = StyleSheet.create({
     container:{
         backgroundColor:color.gray,
         flex:1,
-        alighItems:'center',
+        alignItems:'center',
         padding:10,
-        paddingTop:HEIGHT*0.5
+        paddingTop:HEIGTH*0.5
     }
 })

@@ -1,4 +1,6 @@
 {
   "LOGIN": "Login",
-  "HOME": "Home"
+  "HOME": "Home",
+  "SEARCH":"Search",
+  "ProductDetails":"ProductDetails"
 }
