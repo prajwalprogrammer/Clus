@@ -3,7 +3,7 @@ import { StyleSheet, View, TextInput, Pressable } from "react-native";
 import { StylesAll } from "../../Styles/Styles";
 import Header from "../main/Header";
 import { Text, RowView } from "styles";
-
+import * as RootNavigation from "navigation/RootNavigation";
 import CONSTANT from "navigation/navigationConstant";
 import { FontAwesome5, Feather, SimpleLineIcons } from "@expo/vector-icons";
 import CartProduct from "./CartProduct";

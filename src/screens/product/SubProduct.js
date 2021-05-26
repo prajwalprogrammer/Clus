@@ -9,9 +9,9 @@ const SubProduct = () => {
     <View
       style={{
         backgroundColor: colors.white,
-        height: 100,
-        width: 93,
-        borderRadius: 26,
+        height: 80,
+        width: 80,
+        borderRadius: 1000,
         alignItems: "center",
         ...StylesAll.trendingShadow,
         justifyContent: "center",
@@ -24,14 +24,11 @@ const SubProduct = () => {
           // position: 'absolute',
           borderRadius: 10,
           top: 5,
-          width: "50%",
-          height: "80%",
+          width: 80,
+          height: 150,
           left: 0,
         }}
       />
-      <Text color={colors.black} regular>
-        OIL
-      </Text>
     </View>
   );
 };

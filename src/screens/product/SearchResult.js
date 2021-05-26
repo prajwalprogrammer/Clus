@@ -52,10 +52,10 @@ const SearchResult = ({ navigation }) => {
             style={styles.imageStyle}
           />
           <View style={{ width:'80%', height: "20%", justifyContent: "center" }}>
-            <Text color={colors.lighttext} size={20} headingBold>
+            <Text color={colors.lighttext} size={20} adjustsFontSizeToFit headingBold>
               {item.name}
             </Text>
-            <Text color={colors.lighttext} size={15} regular>
+            <Text color={colors.lighttext} size={15} adjustsFontSizeToFit  numberOfLines={1} regular>
               {item.dis}
             </Text>
           </View>
@@ -66,11 +66,18 @@ const SearchResult = ({ navigation }) => {
               justifyContent: "space-between",
             }}
           >
-            <Text color={colors.lighttext} headingBold size={20}>
-              {item.price}
-            </Text>
-            <Ionicons name="heart-circle-sharp" size={30} color="black" style={StylesAll.trendingShadow} />
+            <RowView>
+                <Text bold size={13} headingBold>
+                  ${" "}
+                </Text>
+                <Text bold size={20} headingBold>
+                  {item.price}
+                </Text>
+              </RowView>
           </RowView>
+          <View style={{position:'absolute',top:10, right:10}}>
+            <Ionicons name="heart-circle-sharp" size={30} color="black" style={StylesAll.trendingShadow} />
+          </View>
         </View>
       </Pressable>
     );
@@ -79,7 +86,7 @@ const SearchResult = ({ navigation }) => {
   return (
     <>
         <View style={{ flexDirection: "column", width: "50%" }}>
-          <Text color={colors.lighttext} size={35} bold>
+          <Text color={colors.lighttext} size={35} numberOfLines={2} adjustsFontSizeToFit bold>
             10 Results Found
           </Text>
           <FlatList
@@ -88,7 +95,7 @@ const SearchResult = ({ navigation }) => {
             contentContainerStyle={{ marginTop: 10, marginBottom: 50 }}
             numColumns={1}
             data={MainCategory.slice(0,MainCategory.length/2)}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id}
             renderItem={({ item, index }) => renderMainCat(item, index)}
           />
         </View>
@@ -98,7 +105,7 @@ const SearchResult = ({ navigation }) => {
             contentContainerStyle={{ marginTop: 10, paddingBottom: 50 }}
             //numColumns={2}
             data={MainCategory.slice(MainCategory.length/2,MainCategory.length)}
-            keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id}
             renderItem={({ item, index }) => renderMainCat(item, index)}
           />
         </View>

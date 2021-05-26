@@ -35,7 +35,7 @@ const CartProduct = () => {
           </>
         </View>
         <View style={{ width: "45%" }}>
-          <Text size={20} color={colors.black} heading>
+          <Text size={20} color={colors.black} heading numberOfLines={1} adjustsFontSizeToFit>
             Facial Cleanser
           </Text>
           <Text color={colors.lighttext} style={{ marginTop: 5 }}>

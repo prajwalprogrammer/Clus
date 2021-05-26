@@ -38,7 +38,7 @@ const Catagery = () => {
         }}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-          <Text size={17}>{item.name}</Text>
+          <Text size={17} style={{width:'80%'}} numberOfLines={1} bold>{item.name}</Text>
         </View>
       </ImageBackground>
     );

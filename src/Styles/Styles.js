@@ -29,7 +29,7 @@ export const StylesAll = StyleSheet.create({
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
-      height: 5,
+      height: 10,
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
