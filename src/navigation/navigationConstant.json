@@ -2,5 +2,6 @@
   "LOGIN": "Login",
   "HOME": "Home",
   "SEARCH":"Search",
-  "ProductDetails":"ProductDetails"
+  "PRODUCTDETAILS":"ProductDetails",
+  "CHECKOUT":"checkout"
 }

@@ -13,6 +13,7 @@ import PlayHome from "../screens/auth/login";
 import PlayHome1 from "../screens/main/VideoPlay";
 import Search from "../screens/product/Search";
 import ProductDetails from "../screens/product/ProductDetails";
+import Checkout from "../screens/product/Checkout";
 
 const Index = () => {
   const Stack = createStackNavigator();
@@ -38,7 +39,8 @@ const Index = () => {
         >
           <Stack.Screen component={Home} name={CONSTANT.HOME} />
           <Stack.Screen component={Search} name={CONSTANT.SEARCH} />
-          <Stack.Screen component={ProductDetails} name={CONSTANT.ProductDetails} />
+          <Stack.Screen component={ProductDetails} name={CONSTANT.PRODUCTDETAILS} />
+          <Stack.Screen component={Checkout} name={CONSTANT.CHECKOUT} />
         </Stack.Navigator>
       )}
     </NavigationContainer>

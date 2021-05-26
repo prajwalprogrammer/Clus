@@ -1,170 +1,146 @@
-import React from 'react'
-import { StyleSheet, View, Dimensions, TextInput, ScrollView, Pressable, Image, FlatList } from 'react-native'
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  TextInput,
+  ScrollView,
+  Pressable,
+  Image,
+  FlatList,
+} from "react-native";
 
-import { FontAwesome5, Feather, AntDesign, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { SliderBox } from "react-native-image-slider-box";
+import CONSTANT from "navigation/navigationConstant";
 
-import colors from 'colors'
-import { Text, RowView } from 'styles'
+import colors from "colors";
+import { Text, RowView } from "styles";
+import { StylesAll } from "../../Styles/Styles";
+import Header from "../main/Header";
+import SubProduct from "./SubProduct";
+import * as RootNavigation from "navigation/RootNavigation";
+const HEIGHT = Dimensions.get("screen").height;
+const WIDTH = Dimensions.get("screen").width;
 
-const HEIGHT = Dimensions.get('screen').height
-const WIDTH = Dimensions.get('screen').width
+const ProductDetails = ({ navigation }) => {
+  const [images, setImages] = React.useState([
+    require("../../assets/images/oil.png"),
+    require("../../assets/images/oil.png"),
+    require("../../assets/images/oil.png"),
+  ]);
+  const [MainCat, setMainCat] = React.useState();
 
-const ProductDetails = ({navigation}) => {
-    const [MainCat1, setMainCat1] = React.useState([
-        {
-            id: 0,
-            name: "Hair Oil",
-            img: "../../assets/images/bg1.png",
-            bgColor: "#BF012C",
-            type: "RUNNING",
-            price: "$186",
-            sizes: [6, 7, 8, 9, 10]
-        }
-    ]);
-    const [MainCat, setMainCat] = React.useState([
-        {
-            id: 0,
-            name: "Hair Oil",
-            img: "../../assets/images/bg1.png",
-            bgColor: "#BF012C",
-            type: "RUNNING",
-            price: "$186",
-            sizes: [6, 7, 8, 9, 10]
-        },
-        {
-            id: 1,
-            name: "Hair Oil",
-            img: '../../assets/images/bg1.png',
-            bgColor: "#D39C67",
-            type: "TRAINING",
-            price: "$135",
-            sizes: [6, 7, 8, 9, 10, 11, 12]
-        },
-        {
-            id: 2,
-            name: "Hair Oil",
-            img: '../../assets/images/bg1.png',
-            bgColor: "#7052A0",
-            type: "BASKETBALL",
-            price: "$199",
-            sizes: [6, 7, 8, 9]
-        },
-        {
-            id: 3,
-            name: "Hair Oil",
-            img: '../../assets/images/bg1.png',
-            bgColor: "#7052A0",
-            type: "BASKETBALL",
-            price: "$199",
-            sizes: [6, 7, 8, 9]
-        },
-    ]);
-    function renderMainCat(item, index) {
-        var trendingStyle = {};
-
-        if (index == 0) {
-            trendingStyle = { marginLeft: 10, }
-        } else {
-            trendingStyle = {}
-        }
-
-        return (
-            <View
-                style={{ height: 280, width: WIDTH * .41, backgroundColor: colors.white, borderRadius: 25, justifyContent: 'center', margin: 6, ...trendingStyle, marginTop: 20, }}
-
-            >
-
-
-                <View style={{
-                    flex: 1,
-                    justifyContent: 'flex-end',
-                    alignItems: 'center'
-                }}>
-                    <Image
-                        source={require('../../assets/images/oil.png')}
-                        resizeMode="cover"
-                        style={{
-                            position: 'absolute',
-                            borderRadius: 20,
-                            top: 0,
-                            width: "100%",
-                            height: '78%',
-
-                        }}
-                    />
-                    <View style={{ height: '20%', justifyContent: 'center' }}>
-                        <Text style={{ color: colors.black }}  size={20}>{item.name}</Text>
-                    </View>
-                    <View style={{ height: '15%',flexDirection: 'row',justifyContent:'space-between' }}>
-                        <Text style={{ color: colors.black }}  size={20}>{item.price}</Text>
-                        <Ionicons name="heart-circle-sharp" size={30} color="black" />
-                    </View>
-                </View>
-
-
-
+  return (
+    <View style={StylesAll.container}>
+      <Header
+        navCom={CONSTANT.SEARCH}
+        Avatar={<Ionicons name="grid-outline" size={30} color={colors.black} />}
+      />
+      <View
+        Style={{
+          backgroundColor: colors.gray,
+          marginHorizontal: 10,
+        }}
+      >
+        <SliderBox
+          images={images}
+          sliderBoxHeight={430}
+          ImageComponentStyle={{
+            width: "80%",
+            height: 380,
+            left: 0,
+            backgroundColor: colors.gray,
+          }}
+          resizeMode="cover"
+        />
+        <RowView style={{ justifyContent: "space-evenly", marginVertical: 20 }}>
+          <SubProduct />
+          <SubProduct />
+          <SubProduct />
+        </RowView>
+        <View
+          style={{
+            backgroundColor: colors.white,
+            height: "100%",
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+          }}
+        >
+          <RowView
+            style={{
+              marginVertical: 40,
+              marginHorizontal: 30,
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <Text size={25} bold color={colors.black} headingBold>
+                Facial Cleanser
+              </Text>
+              <Text color={colors.lighttext} style={{ marginTop: 5 }}>
+                Size: 7.60
+              </Text>
             </View>
-        )
-    }
+            <View>
+              <RowView>
+                <FontAwesome name="star" size={24} color="black" />
+                <FontAwesome name="star" size={24} color="black" />
+                <FontAwesome name="star" size={24} color="black" />
+                <FontAwesome name="star" size={24} color="black" />
+                <FontAwesome name="star-half-empty" size={24} color="black" />
+              </RowView>
+              <Text style={{ marginTop: 10 }}>(132 Reviews)</Text>
+            </View>
+          </RowView>
+          <RowView
+            style={{ marginHorizontal: 30, justifyContent: "space-between" }}
+          >
+            <Text size={35} bold>
+              $99.8
+            </Text>
 
-    return (
-        <View style={{ backgroundColor: colors.gray }}>
-            <RowView style={{ margin: 33, height: 40, flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Ionicons name="chevron-back" size={30} color="black" onPress={()=>navigation.goBack()} />
-                <Text size={17} color={colors.lighttext}  size={21}>Search Product</Text>
-                <Image
-                    source={require('../../assets/images/7b8322de5adc6e2607af672b3afb562b.png')}
-                    resizeMode="cover"
-                    style={{
-                        // position: 'absolute',
-                        borderRadius: 10,
-                        top: 5,
-                        width: "15%",
-                        height: '100%',
-                        left: 0,
-
-                    }}
-                />
+            <RowView style={styles.Cart}>
+              <Text bold>-</Text>
+              <Text>1</Text>
+              <Text>+</Text>
             </RowView>
-
-
-            <ScrollView contentContainerStyle={{ paddingTop: 20, marginHorizontal: 10, marginBottom: 20, flexDirection: 'row' }}>
-                <View style={{ flexDirection: 'column', width: '50%' }}>
-                    <Text style={{}} size={30} >10 Results Found</Text>
-                    <FlatList
-                        //columnWrapperStyle={{justifyContent:'space-evenly'}}
-                        showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ marginTop: 10, marginBottom: 50 }}
-                        numColumns={1}
-                        data={MainCat}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({ item, index }) => renderMainCat(item, index)}
-                    />
-                </View>
-                <View style={{ width: '50%', flexDirection: 'column' }}>
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ marginTop: 10, paddingBottom: 50 }}
-                        //numColumns={2}
-                        data={MainCat}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({ item, index }) => renderMainCat(item, index)}
-                    />
-                </View>
-            </ScrollView>
+            <>
+              <RowView style={styles.TextInput}>
+                <Pressable
+                  onPress={() => RootNavigation.navigate(CONSTANT.CHECKOUT)}
+                >
+                  <Text style={{ color: colors.white }} size={20} bold>
+                    Cart
+                  </Text>
+                </Pressable>
+              </RowView>
+            </>
+          </RowView>
         </View>
-    )
-}
+      </View>
+    </View>
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;
 
 const styles = StyleSheet.create({
-    TextInput: {
-        padding: 10,
-        paddingHorizontal: 20,
-        fontSize: 20,
-        color: colors.white,
-        width: '65%',
-        height: '100%'
-    },
-})
+  TextInput: {
+    width: "27%",
+    height: "130%",
+    borderRadius: 20,
+    backgroundColor: colors.black,
+    alignSelf: "center",
+    justifyContent: "center",
+  },
+  Cart: {
+    width: "30%",
+    height: "80%",
+    justifyContent: "space-evenly",
+    borderRadius: 40,
+    borderColor: colors.lighttext,
+    borderWidth: 2,
+    left: 10,
+  },
+});

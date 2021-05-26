@@ -21,7 +21,7 @@ const App = () => {
 
   if(!fontsLoaded){
    return <View>
-     <Text>Loadinf</Text>
+     
    </View>
   }
   return (

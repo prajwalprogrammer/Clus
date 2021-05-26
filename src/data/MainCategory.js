@@ -3,12 +3,13 @@ faker.seed(10);
 const DATA = [...Array(30).keys()].map((_, i) => {
     return {
         id: faker.datatype.uuid(),
-        name:faker.commerce.productName(),
+        name:faker.name.firstName(),
         bgColor:faker.commerce.color(),
         img: faker.image.fashion(),
         type:faker.commerce.department(),
         price:faker.commerce.price(),
-        sizes:[6,7,8,9,10]
+        sizes:[6,7,8,9,10],
+        dis:faker.name.jobType()
     };
 });
  
