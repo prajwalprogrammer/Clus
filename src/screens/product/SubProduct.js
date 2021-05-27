@@ -13,7 +13,7 @@ const SubProduct = () => {
         width: 80,
         borderRadius: 1000,
         alignItems: "center",
-        ...StylesAll.trendingShadow,
+        //...StylesAll.trendingShadow,
         justifyContent: "center",
       }}
     >

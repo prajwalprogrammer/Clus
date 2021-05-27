@@ -53,20 +53,25 @@ const Checkout = () => {
         </RowView>
       </RowView>
       <View style={{ width: "85%", height: 170, alignSelf: "center" }}>
-        <CheckoutTotal pname="Subtotal" Price="$45.99"/>
-        <CheckoutTotal pname="Shipping" Price="$4.99"/>
-        <CheckoutTotal pname="Bag Total" Price="$50.99" Item="(4 items) "/>
-        
+        <CheckoutTotal pname="Subtotal" Price="$45.99" />
+        <CheckoutTotal pname="Shipping" Price="$4.99" />
+        <CheckoutTotal pname="Bag Total" Price="$50.99" Item="(4 items) " />
       </View>
-      <RowView style={{...styles.Apply,width:'80%',borderRadius:30,height:60,marginTop:10}}>
-            <Pressable
-              onPress={() => RootNavigation.navigate(CONSTANT.CHECKOUT)}
-            >
-              <Text style={{ color: colors.lighttext }} size={20} bold>
-                Proceed To Checkout
-              </Text>
-            </Pressable>
-          </RowView>
+      <RowView
+        style={{
+          ...styles.Apply,
+          width: "80%",
+          borderRadius: 30,
+          height: 60,
+          marginTop: 10,
+        }}
+      >
+        <Pressable onPress={() => RootNavigation.navigate(CONSTANT.CHECKOUT)}>
+          <Text style={{ color: colors.lighttext }} size={20} bold>
+            Proceed To Checkout
+          </Text>
+        </Pressable>
+      </RowView>
     </View>
   );
 };
